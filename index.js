@@ -1,16 +1,10 @@
 import React, {Component} from 'react'
 
 import {
-    DateRangePicker,
-    SingleDatePicker,
-    DayPickerRangeController,
+  DateRangePicker,
 } from 'react-dates'
 
 import {
-  DISPLAY_FORMAT,
-  ISO_FORMAT,
-  ISO_MONTH_FORMAT,
-
   START_DATE,
   END_DATE,
 
@@ -32,15 +26,7 @@ import {
   OPEN_DOWN,
   OPEN_UP,
 
-  DAY_SIZE,
-  BLOCKED_MODIFIER,
   WEEKDAYS,
-
-  FANG_WIDTH_PX,
-  FANG_HEIGHT_PX,
-  DEFAULT_VERTICAL_SPACING,
-
-  MODIFIER_KEY_NAMES,
 } from 'react-dates/lib/constants'
 
 import 'react-dates/initialize'
@@ -48,18 +34,18 @@ import 'react-dates/lib/css/_datepicker.css'
 
 const Enum = (options) => ({__ty: 'Enum', options})
 
-const FocusedInputShape = Enum(['startDate', 'endDate'])
-const IconPositionShape = Enum(['startDate', 'endDate'])
+const FocusedInputShape = Enum([START_DATE, END_DATE])
+const IconPositionShape = Enum([ICON_AFTER_POSITION, ICON_BEFORE_POSITION])
 
 
 class DateRangeWrapper extends Component {
-    render() {
-        return React.createElement(DateRangePicker, Object.assign({}, this.props, {
-            firstDayOfWeek: Number(this.props.firstDayOfWeek),
-            focusedInput: this.props.isOpen ? this.props.focusedInput : undefined, 
-            block: true
-        }));
-    }
+  render() {
+    return React.createElement(DateRangePicker, Object.assign({}, this.props, {
+      firstDayOfWeek: Number(this.props.firstDayOfWeek),
+      focusedInput: this.props.isOpen ? this.props.focusedInput : undefined,
+      block: true,
+    }))
+  }
 }
 
 DateRangeWrapper.pdPropControls = {
@@ -69,7 +55,7 @@ DateRangeWrapper.pdPropControls = {
   onDatesChange: 'Function',
 
   isOpen: 'Boolean',
-  focusedInput: Enum([START_DATE, END_DATE]),
+  focusedInput: FocusedInputShape,
   onFocusChange: 'Function',
 
   onClose: 'Function',
@@ -85,12 +71,11 @@ DateRangeWrapper.pdPropControls = {
   screenReaderInputMessage: 'Text',
   showClearDates: 'Boolean',
   showDefaultInputIcon: 'Boolean',
-  inputIconPosition: Enum([ICON_BEFORE_POSITION, ICON_AFTER_POSITION]),
+  inputIconPosition: IconPositionShape,
   customInputIcon: 'Function',
   customArrowIcon: 'Function',
   customCloseIcon: 'Function',
   noBorder: 'Boolean',
-  block: 'Boolean',
   small: 'Boolean',
   regular: 'Boolean',
   keepFocusOnInput: 'Boolean',
@@ -98,7 +83,7 @@ DateRangeWrapper.pdPropControls = {
   // calendar presentation and interaction related props
   // renderMonthText: mutuallyExclusiveProps('Function', 'renderMonthText', 'renderMonthElement'),
   // renderMonthElement: mutuallyExclusiveProps('Function', 'renderMonthText', 'renderMonthElement'),
-  orientation: Enum([HORIZONTAL_ORIENTATION, VERTICAL_ORIENTATION]),
+  orientation: Enum([HORIZONTAL_ORIENTATION, VERTICAL_ORIENTATION, VERTICAL_SCROLLABLE]),
   anchorDirection: Enum([ANCHOR_LEFT, ANCHOR_RIGHT]),
   openDirection: Enum([OPEN_UP, OPEN_DOWN]),
   horizontalMargin: 'Number',
