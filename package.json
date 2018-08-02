@@ -10,7 +10,7 @@
     "develop": "pagedraw develop index.js"
   },
   "devDependencies": {
-    "pagedraw-cli": "^0.4.8"
+    "pagedraw-cli": "0.4.9"
   },
   "dependencies": {
     "moment": "^2.22.2",
