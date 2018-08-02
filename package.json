@@ -1,0 +1,21 @@
+{
+  "name": "pd-react-dates",
+  "version": "0.1.0",
+  "description": "React Dates for Pagedraw",
+  "main": "index.js",
+  "repository": "https://github.com/Pagedraw/pd-react-dates.git",
+  "author": "Pagedraw Team",
+  "license": "MIT",
+  "scripts": {
+    "develop": "pagedraw develop index.js"
+  },
+  "devDependencies": {
+    "pagedraw-cli": "^0.4.8"
+  },
+  "dependencies": {
+    "moment": "^2.22.2",
+    "react": "^16.4.1",
+    "react-dates": "^17.1.1",
+    "react-dom": "^16.4.1"
+  }
+}
