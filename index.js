@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 
 import {
     DateRangePicker,
@@ -51,12 +51,24 @@ const Enum = (options) => ({__ty: 'Enum', options})
 const FocusedInputShape = Enum(['startDate', 'endDate'])
 const IconPositionShape = Enum(['startDate', 'endDate'])
 
-DateRangePicker.pdPropControls = {
+
+class DateRangeWrapper extends Component {
+    render() {
+        return React.createElement(DateRangePicker, Object.assign({}, this.props, {
+            firstDayOfWeek: Number(this.props.firstDayOfWeek),
+            focusedInput: this.props.isOpen ? this.props.focusedInput : undefined, 
+            block: true
+        }));
+    }
+}
+
+DateRangeWrapper.pdPropControls = {
   // required props for a functional interactive DateRangePicker
   startDate: 'Number',
   endDate: 'Number',
   onDatesChange: 'Function',
 
+  isOpen: 'Boolean',
   focusedInput: Enum([START_DATE, END_DATE]),
   onFocusChange: 'Function',
 
@@ -96,7 +108,7 @@ DateRangePicker.pdPropControls = {
   disableScroll: 'Boolean',
   daySize: 'Number',
   isRTL: 'Boolean',
-  firstDayOfWeek: Enum(WEEKDAYS),
+  firstDayOfWeek: Enum(WEEKDAYS.map(String)),
   initialVisibleMonth: 'Function',
   numberOfMonths: 'Number',
   keepOpenOnDateSelect: 'Boolean',
@@ -136,6 +148,6 @@ DateRangePicker.pdPropControls = {
   dayAriaLabelFormat: 'Text',
 }
 
-DateRangePicker.pdResizable = ['width', 'height']
+DateRangeWrapper.pdResizable = ['width']
 
-export default { DateRangePicker }
+export default { DateRangePicker: DateRangeWrapper }
